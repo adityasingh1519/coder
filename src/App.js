@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import TextForm from "./components/TextForm";
+import About from "./components/about";
+
+import React, {useState} from 'react'
 
 function App() {
+
+  let [mode,SetMode] = useState('light'); //wether it is enabled or not 
+  const togglemode = () => {
+
+    if(mode === 'dark')
+    {
+      SetMode('light')
+      document.body.style.backgroundColor = 'white';
+    }
+    else
+    {
+      SetMode('dark')
+      document.body.style.backgroundColor = 'black';
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="blank">
+      < Navbar title = "TextStyle" mode = {mode} togglemode = {togglemode}/>
+      {/* <Navbar  /> */}
+      <TextForm heading = "This is a text area " mode = {mode}/>
+
+      
+
+      {/* <About/> */}
+      
     </div>
   );
 }
